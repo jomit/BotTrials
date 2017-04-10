@@ -1,2 +1,2 @@
 # BotTrials
-Sample code for creting Bot's
+Sample code for creating Bot's
