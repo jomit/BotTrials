@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.ConnectorEx;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using System.Threading.Tasks;
+using Microsoft.Bot.Connector;
 
 namespace BotTrials.Dialogs
 {
@@ -13,13 +15,17 @@ namespace BotTrials.Dialogs
     [Serializable]
     public class AskDialog : LuisDialog<object>
     {
+        List<IActivity> test = new List<IActivity>();
+        
         [LuisIntent("")]
         public async Task None(IDialogContext context, LuisResult result)
         {
             string message = $"Sorry I did not understand: "
                 + string.Join(", ", result.Intents.Select(i => i.Intent));
             await context.PostAsync(message);
+
             context.Wait(MessageReceived);
+            
         }
 
         [LuisIntent("ProductSearch")]
@@ -35,10 +41,14 @@ namespace BotTrials.Dialogs
             //    await context.PostAsync($"Here you what you are looking for {search}");
             //    context.Wait(MessageReceived);
             //}
+
+            test.Add(context.Activity);
+
             string message = $"Here is your intent : "
                + string.Join(", ", result.Intents.Select(i => i.Intent)) + " | "
                + string.Join(", ", result.Entities.Select(i => i.Entity));
             await context.PostAsync(message);
+
             context.Wait(MessageReceived);
         }
     }

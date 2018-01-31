@@ -1,11 +1,13 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using Microsoft.Bot.Builder.Dialogs;
+using AzureSearchBot.Dialogs;
 
-namespace BotTrials
+namespace AzureSearchBot
 {
     [BotAuthentication]
     public class MessagesController : ApiController
@@ -18,7 +20,8 @@ namespace BotTrials
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
+                ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
+                await Conversation.SendAsync(activity, () => new PromptButtonsDialog());
             }
             else
             {

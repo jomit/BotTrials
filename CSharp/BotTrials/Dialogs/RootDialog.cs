@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.History;
 using Microsoft.Bot.Connector;
+using Microsoft.Bot.Builder.Dialogs.Internals;
 
 namespace BotTrials.Dialogs
 {
@@ -17,15 +19,30 @@ namespace BotTrials.Dialogs
 
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
-            var activity = await result as Activity;
+            var message = await result;
 
-            // calculate something for us to return
-            int length = (activity.Text ?? string.Empty).Length;
+            await this.SendWelcomeMessageAsync(context);
+        }
 
-            // return our reply to the user
-            await context.PostAsync($"You sent {activity.Text} which was {length} characters");
+        private async Task SendWelcomeMessageAsync(IDialogContext context)
+        {
+            await context.PostAsync("Hi, I'm Jarvis.");
 
-            context.Wait(MessageReceivedAsync);
+            context.Call(new AskDialog(), this.AskDialogResumeAfter);
+        }
+
+        private async Task AskDialogResumeAfter(IDialogContext context, IAwaitable<object> result)
+        {
+            try
+            {
+                await result;
+            }
+            catch (TooManyAttemptsException)
+            {
+                await context.PostAsync("I'm sorry, I'm having issues understanding you. Let's try again.");
+
+                await this.SendWelcomeMessageAsync(context);
+            }
         }
     }
 }
