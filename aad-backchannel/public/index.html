@@ -17,13 +17,15 @@
             width: 460px;
         }
 
-        .hidden{display:none!important}
+        .hidden {
+            display: none!important
+        }
     </style>
 </head>
 
 <body>
     <h2>AAD + Bot Backchannel Sample:</h2>
-    
+
     <div>
         <button id="callGraphButton" type="button" onclick="callGraphApi()">Login</button>
         <button id="signOutButton" type="button" onclick="signOut()" class="hidden">Sign out</button>
@@ -74,7 +76,6 @@
                 .subscribe(function (id) {
                     console.log('login sent');
                 });
-
         };
     </script>
 
