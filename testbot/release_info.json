@@ -1,0 +1,188 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "release_info",
+  "desc": "release_info",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "greetings"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "release info"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "closedLists": [
+    {
+      "name": "programName",
+      "subLists": [
+        {
+          "canonicalForm": "Cnl",
+          "list": [
+            "Cannon lake",
+            "cannon",
+            "Cannon"
+          ]
+        },
+        {
+          "canonicalForm": "Kbl",
+          "list": [
+            "Kaby lake",
+            "Kaby"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sku",
+      "subLists": [
+        {
+          "canonicalForm": "sku1",
+          "list": []
+        },
+        {
+          "canonicalForm": "sku2",
+          "list": []
+        },
+        {
+          "canonicalForm": "sku3",
+          "list": []
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "subLists": [
+        {
+          "canonicalForm": "latest",
+          "list": [
+            "last"
+          ]
+        },
+        {
+          "canonicalForm": "v1",
+          "list": [
+            "version1"
+          ]
+        },
+        {
+          "canonicalForm": "v2",
+          "list": [
+            "version2"
+          ]
+        },
+        {
+          "canonicalForm": "v3",
+          "list": [
+            "version3"
+          ]
+        }
+      ]
+    }
+  ],
+  "bing_entities": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "hello",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "hey",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "hey there",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "whats up",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "i want release information?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "i want release info?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the content of release 12.0.0.7054v2?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest scme release?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what are the changes in x.x.x.x release",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest me release?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest amt release?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest firmware release?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest me release in cnl?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest amt release cnl?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest firmware release cnl?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest me release in kbl?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest amt release kbl?",
+      "intent": "release info",
+      "entities": []
+    },
+    {
+      "text": "what is the latest firmware release kbl?",
+      "intent": "release info",
+      "entities": []
+    }
+  ]
+}
